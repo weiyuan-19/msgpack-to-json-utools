@@ -1,0 +1,15 @@
+{
+  "main": "index.html",
+  "logo": "logo.png",
+  "pluginSetting": {
+    "height": 540,
+    "single": true
+  },
+  "features": [
+    {
+      "code": "msgpack-to-json",
+      "explain": "将 Hex 格式的 MessagePack 转换为格式化 JSON",
+      "cmds": ["msgpack-to-json", "msg2json", "MessagePack 转 JSON", "MP 转 JSON"]
+    }
+  ]
+}

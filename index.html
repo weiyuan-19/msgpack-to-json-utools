@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; connect-src 'none'; img-src 'self' data:; style-src 'self'; script-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'"
+    />
+    <title>msgpack-to-json</title>
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="app-header">
+        <div>
+          <h1>msgpack-to-json</h1>
+          <p>MessagePack 转格式化 JSON</p>
+        </div>
+        <span class="privacy-badge" title="无上传、无缓存、无网络请求">
+          <span class="status-dot"></span>
+          仅本地处理
+        </span>
+      </header>
+
+      <section class="workspace" aria-label="MessagePack 转 JSON">
+        <div class="pane">
+          <div class="pane-header">
+            <label for="input">MessagePack</label>
+            <span id="detected-format" class="meta">Hex</span>
+          </div>
+          <textarea
+            id="input"
+            spellcheck="false"
+            autocomplete="off"
+            placeholder="粘贴 Hex，例如：82 a2 69 64 01 a4 6e 61 6d 65 a5 74 65 73 74"
+          ></textarea>
+        </div>
+
+        <div class="pane">
+          <div class="pane-header">
+            <label for="output">JSON</label>
+            <span id="result-meta" class="meta" aria-live="polite"></span>
+          </div>
+          <textarea
+            id="output"
+            class="output"
+            readonly
+            spellcheck="false"
+            placeholder="转换结果会显示在这里"
+          ></textarea>
+        </div>
+      </section>
+
+      <footer class="actions">
+        <p id="message" class="message" role="status" aria-live="polite">
+          粘贴 Hex 格式的 MessagePack 数据
+        </p>
+        <div class="button-group">
+          <button id="clear" class="button secondary" type="button">清空</button>
+          <button id="copy" class="button secondary" type="button" disabled>复制 JSON</button>
+          <button id="convert" class="button primary" type="button">转换</button>
+        </div>
+      </footer>
+    </main>
+    <script type="module" src="/src/app.js"></script>
+  </body>
+</html>
