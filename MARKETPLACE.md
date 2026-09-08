@@ -16,12 +16,14 @@ msgpack-to-json 是一个专注于 MessagePack 解码的本地工具。粘贴 He
 
 ## 使用方法
 
-1. 在 uTools 中输入 `msgpack-to-json`、`msg2json`、`MessagePack 转 JSON` 或 `MP 转 JSON`。
+1. 在 uTools 中输入 `msgpack-to-json`、`msg2json` 或 `MessagePack 转 JSON`。
 2. 将 Hex 格式的 MessagePack 数据粘贴到左侧输入框。
 3. 点击“转换”，或按 `Ctrl/Cmd + Enter`。
 4. 在右侧查看并复制格式化后的 JSON。
 
 支持连续 Hex，也支持空格、换行和常见分隔符，例如：`82 a2 69 64 01`。
+
+复制一段 Hex 后呼出 uTools，也可以选择“MessagePack Hex 转 JSON”直接进入并自动转换。
 
 ## 隐私说明
 
@@ -32,6 +34,7 @@ msgpack-to-json 是一个专注于 MessagePack 解码的本地工具。粘贴 He
 版本：0.1.0
 
 - 支持 Hex 格式的 MessagePack 输入
+- 支持从 uTools 自动匹配剪贴板中的 Hex 并转换
 - 输出两空格缩进的格式化 JSON
 - 支持复制 JSON
 - 对 64 位整数、二进制和扩展类型进行安全转换与提示

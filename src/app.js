@@ -69,8 +69,12 @@ input.addEventListener("keydown", (event) => {
 });
 
 if (window.utools?.onPluginEnter) {
-  window.utools.onPluginEnter(() => {
+  window.utools.onPluginEnter((action) => {
     clear();
+    if (action.type === "regex" && typeof action.payload === "string") {
+      input.value = action.payload;
+      convert();
+    }
   });
 }
 
