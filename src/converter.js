@@ -104,14 +104,22 @@ export function convertMessagePack(rawInput) {
   const { bytes, format } = parseInput(rawInput);
   if (bytes.length === 0) throw new Error("MessagePack 内容为空");
 
+  const state = { warnings: new Set() };
   const decoded = decode(bytes, {
     useBigInt64: true,
+    mapKeyConverter(key) {
+      if (typeof key === "bigint") {
+        state.warnings.add("64 位整数 Map 键已转换为字符串，以避免精度丢失");
+        return key.toString();
+      }
+      if (typeof key === "string" || typeof key === "number") return key;
+      throw new Error(`不支持的 Map 键类型：${typeof key}`);
+    },
     maxStrLength: 16 * 1024 * 1024,
     maxBinLength: 16 * 1024 * 1024,
     maxArrayLength: 1_000_000,
     maxMapLength: 1_000_000,
   });
-  const state = { warnings: new Set() };
   const normalized = normalize(decoded, state);
 
   return {
