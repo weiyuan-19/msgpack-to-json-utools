@@ -9,7 +9,7 @@ This repository contains a small Vite-built uTools plugin for converting Hex-enc
 - `src/styles.css` defines the plugin UI and light/dark theme styles.
 - `test/converter.test.js` contains conversion unit tests.
 - `public/` holds `plugin.json`, the logo, and third-party notices copied into builds.
-- `index.html` is the Vite entry point; `MARKETPLACE.md` contains release copy.
+- `index.html` is the Vite entry point; `MARKETPLACE.md` contains release copy, and `CHANGELOG.md` contains version notes.
 - `plugin/` is generated output. Do not edit or commit it.
 
 ## Build, Test, and Development Commands
@@ -33,8 +33,16 @@ Write tests with `node:test` and `node:assert/strict`. Name files `*.test.js` un
 
 ## Commit & Pull Request Guidelines
 
-History currently contains only `Initial commit`, so no established commit convention exists. Use short, imperative subjects such as `Handle nested extension values`. Keep commits focused. Pull requests should explain the behavior changed, list validation performed, and link relevant issues. Include screenshots for visible UI changes and note any updates to `public/plugin.json`, marketplace copy, permissions, or privacy behavior.
+Use short, imperative subjects that describe the change, such as `Handle nested extension values`. Keep commits focused. Git commits and versions are independent: one version may contain multiple commits. Group all changes not yet pushed under one version entry in `CHANGELOG.md`; this does not require combining their Git commits. Until those changes are pushed, keep subsequent changes in the same version rather than incrementing for each commit. By default, increment the final numeric version component by one (for example, `0.1.0` → `0.1.1`); use a larger version change only when explicitly requested by the user. Keep `package.json`, the root package versions in `package-lock.json`, and `CHANGELOG.md` in sync. Managing version records alone does not authorize creating, amending, or squashing commits. Do not push unless explicitly requested.
+
+Keep `CHANGELOG.md` limited to version headings and user-facing change descriptions. Do not add dates, unreleased sections, validation results, or documentation-maintenance entries. Maintain version notes only in `CHANGELOG.md`; `MARKETPLACE.md` links to it.
+
+Pull requests should explain the user-visible behavior, list verification commands, link a related issue when one exists, and include screenshots for interface changes. Note any updates to `public/plugin.json`, marketplace copy, permissions, or privacy behavior. Do not commit generated `plugin/` output.
 
 ## Security & Configuration
 
 The plugin promises local-only processing. Preserve the restrictive Content Security Policy in `index.html`; do not add network access, persistence, or new permissions without documenting the rationale and updating user-facing privacy information.
+
+## Agent Notes
+
+When `.codegraph/` exists, use CodeGraph to locate and understand code before text searches or file reads. Do not create an index when it is absent.
